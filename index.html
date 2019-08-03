@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<style>
+    body {
+
+        background-image: url("img/bg.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100%;
+        color: #fff;
+    }
+
+
+    #menu {
+        font-size: 30px;
+    }
+
+    #menu a {
+        /* font-family: Arial, Helvetica, sans-serif; */
+        color: #fff;
+        padding-right: 15px;
+    }
+
+    .card {
+        color: #00adff;
+
+    }
+</style>
+
+<body>
+    <div class="container-fluid p-4">
+        <div class="row mt-4 pl-5 font-weight-bold" id="menu">
+            <div class="col-md-6 pl-5"><img src="img/logo.png" alt="" srcset="" width="50"></div>
+            <div class="col-md-6 text-center font-weight-light">
+                <a href="">HOME</a>
+                <a href="">INFORMATION</a>
+                <a href="">LOGIN</a>
+            </div>
+        </div>
+    </div>
+    <!-- 00adff -->
+    <br>
+    <div class="container mt-5">
+        <div class="row mt-5 text-center">
+            <div class="col-md-6">
+                <br>
+                <br>
+                <img src="img/judul.png" class="pt-5" alt="" width="500" srcset="">
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h5 class="card-title">Makassar Weather</h5>
+                        <hr>
+                        <h3 class="card-subtitle mb-2 font-weight-light">Mostly Cloudly</h3>
+                        <p class="card-text display-1">25<sup>o</sup> </p>
+                        <span class="card-text">
+                            <img src="img/cloud.png" width="70" alt="" srcset="">
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <!-- card 2 -->
+
+            <div class="col-md-3">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h5 class="card-title">Skala Richter</h5>
+                        <hr>
+                        <h3 class="card-subtitle mb-2 font-weight-light"><span id="status"></span></h3>
+                        <p class="card-text display-1"><span id="text"></span><sup>o</sup> </p>
+                        <span class="card-text">
+                            <img src="img/mag.png" width="70" alt="" srcset="">
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- 
+    <h1 id="text"></h1>
+    <h1 id="status"></h1> -->
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB37LvmzixffwCMQTeMngErYKZU7y4bSZk",
+            authDomain: "agilproject-5eb11.firebaseapp.com",
+            databaseURL: "https://agilproject-5eb11.firebaseio.com",
+            projectId: "agilproject-5eb11",
+            storageBucket: "",
+            messagingSenderId: "846656934555",
+            appId: "1:846656934555:web:ee39357c518c507d"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        var teks = document.getElementById("text");
+        var stats = document.getElementById("status");
+        var Data = firebase.database().ref("test");
+        Data.on("value", function (r) {
+            var status = r.val();
+            if (status > 3) {
+                text.innerHTML = status;
+                stats.innerHTML = "<span class='text-danger'> Danger !</span>";
+                swal("Bahaya!", "Terdeteksi Ada Gempa!", "warning");
+
+            } else {
+                text.innerHTML = status;
+                stats.innerHTML = "<span> Normal </span>";
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
+
+</html>
