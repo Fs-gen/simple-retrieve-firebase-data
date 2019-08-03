@@ -104,20 +104,21 @@
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
-            apiKey: "AIzaSyB37LvmzixffwCMQTeMngErYKZU7y4bSZk",
-            authDomain: "agilproject-5eb11.firebaseapp.com",
-            databaseURL: "https://agilproject-5eb11.firebaseio.com",
-            projectId: "agilproject-5eb11",
-            storageBucket: "",
-            messagingSenderId: "846656934555",
-            appId: "1:846656934555:web:ee39357c518c507d"
+            apiKey: "AIzaSyC_kPQZGuTuXWeqeAebl5wB01zHkatu7GQ",
+            authDomain: "tugasakhir-f3a66.firebaseapp.com",
+            databaseURL: "https://tugasakhir-f3a66.firebaseio.com",
+            projectId: "tugasakhir-f3a66",
+            storageBucket: "tugasakhir-f3a66.appspot.com",
+            messagingSenderId: "760838882746",
+            appId: "1:760838882746:web:7849af2a5453194b"
         };
+
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
         var teks = document.getElementById("text");
         var stats = document.getElementById("status");
-        var Data = firebase.database().ref("test");
+        var Data = firebase.database().ref("TestFirebase").child("Coba");
         Data.on("value", function (r) {
             var status = r.val();
             if (status > 3) {
